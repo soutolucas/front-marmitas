@@ -1,0 +1,52 @@
+<div class="card mb-3">
+  <div class="card-header clearfix">
+    <h3 class="float-left">Acompanhamento</h3>
+    <button type="button" *ngIf="id" (click)="delete()" class="btn btn-outline-danger float-right">
+      Deletar
+    </button>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="save(form.value)">
+      <div class="form-group">
+        <div class="form-label-group">
+          <input id="id" formControlName="id" class="form-control" placeholder="ID">
+          <label for="id">ID</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-label-group">
+          <input id="title" formControlName="name" class="form-control" placeholder="Nome">
+          <label for="title">Nome</label>
+        </div>
+      </div>
+      <div formArrayName="options">
+        <div class="input-group mb-3" [formGroupName]="i" *ngFor="let opt of formArray.controls; let i = index">
+          <input formControlName="name" class="form-control">
+          <div class="input-group-append">
+            <div *ngIf="form.controls.options.length == i+1 && (opt.valid || i == 0); then addButton else removeButton"></div>
+            <ng-template #addButton>
+              <button type="button" (click)="addNewOption()" class="btn btn-outline-success">
+                <i class="fas fa-plus"></i> Opção
+              </button>
+            </ng-template>
+            <ng-template #removeButton>
+              <button type="button" (click)="removeOption(i)" class="btn btn-outline-danger">
+                <i class="fas fa-minus"></i> Opção
+              </button>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="float-left">
+          <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid">
+            Salvar
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="goBack()">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

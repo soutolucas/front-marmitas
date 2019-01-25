@@ -1,0 +1,31 @@
+<div class="card mb-3">
+  <div class="card-header clearfix clear-fix">
+    <h3 class="float-left">Pedidos</h3>
+    <button (click)="create()" class="btn btn-primary float-right" *ngIf="pedidosOpened && pedidosOpened.length === 0">
+      <i class="fas fa-plus"></i> Novo
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="form-group" *ngIf="pedidosOpened && pedidosOpened.length !== 0">
+      <h5>Abertos:</h5>
+      <div class="input-group mb-3" *ngFor="let pedido of pedidosOpened">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-info" type="button" (click)="detail(pedido.id)">Detalhes</button>
+        </div>
+        <input type="text" class="form-control" placeholder="Aberto em:" disabled value="Aberto em: {{formatDate(pedido.openedAt)}}">
+        <input type="text" class="form-control" placeholder="Refeições:" disabled value="Refeições: {{pedido.refeicoes.length}}">
+      </div>
+    </div>
+    <div class="form-group" *ngIf="pedidosClosed && pedidosClosed.length !== 0">
+      <h5>Fechados:</h5>
+      <div class="input-group mb-3" *ngFor="let pedido of pedidosClosed">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-info" type="button" (click)="detail(pedido.id)">Detalhes</button>
+        </div>
+        <input type="text" class="form-control" placeholder="Aberto em:" disabled value="Aberto em: {{formatDate(pedido.openedAt)}}">
+        <input type="text" class="form-control" placeholder="Fechado em:" disabled value="Fechado em: {{formatDate(pedido.closedAt)}}">
+        <input type="text" class="form-control" placeholder="Refeições:" disabled value="Refeições: {{pedido.refeicoes.length}}">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="card mb-3">
+  <div class="card-header clearfix clear-fix">
+    <h3 class="float-left">Acompanhamentos</h3>
+    <button (click)="create()" class="btn btn-primary float-right">
+      <i class="fas fa-plus"></i> Novo
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acompanhamento of acompanhamentos" (click)="detail(acompanhamento.id)">
+            <td>{{acompanhamento.name}}</td>
+            <td>{{arrayToString(acompanhamento.options)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

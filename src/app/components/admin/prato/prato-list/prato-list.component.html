@@ -1,0 +1,28 @@
+<div class="card mb-3">
+  <div class="card-header clearfix clear-fix">
+    <h3 class="float-left">Pratos</h3>
+    <button (click)="create()" class="btn btn-primary float-right">
+      <i class="fas fa-plus"></i> Novo
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Proteinas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prato of pratos" (click)="detail(prato.id)">
+            <td>{{prato.name}}</td>
+            <td>{{prato.price}}</td>
+            <td>{{prato.maxProtein}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

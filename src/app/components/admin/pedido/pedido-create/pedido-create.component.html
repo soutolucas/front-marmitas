@@ -1,0 +1,29 @@
+<div class="card mb-3">
+  <div class="card-header clearfix">
+    <h3 class="float-left">Pedido</h3>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+      <div class="form-group">
+        <div class="form-label-group">
+          <div class="form-check form-check-inline" formArrayName="proteinas" *ngFor="let proteina of proteinasForm.controls; let i = index">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="proteina-{{i}}" [formControlName]="i">
+              <label class="custom-control-label" for="proteina-{{i}}">{{proteinas[i].name}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="float-left">
+          <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid">
+            Salvar
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="goBack()">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
